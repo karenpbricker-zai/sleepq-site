@@ -333,7 +333,7 @@ main {
 
 .steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     position: relative;
 }
@@ -522,10 +522,14 @@ footer {
         font-size: 2.5rem;
     }
 
-    .features,
-    .steps {
+    .features {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .phone-frame {
@@ -563,5 +567,10 @@ footer {
         gap: 1rem;
         text-align: center;
         padding: 2rem 1.25rem;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 }
