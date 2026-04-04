@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepQ Marketing Graphics - Index</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #0A1628;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(10, 22, 40, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #0A1628 0%, #1a2f4d 100%);
+            padding: 24px;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .card-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .specs {
+            margin-bottom: 20px;
+        }
+
+        .spec {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+            font-size: 14px;
+        }
+
+        .spec:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #0A1628;
+        }
+
+        .spec-value {
+            color: #F5A623;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin: 20px 0;
+            flex: 1;
+        }
+
+        .features {
+            font-size: 13px;
+            margin: 15px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 6px 0;
+            color: #666;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #F5A623;
+            color: #0A1628;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f59609;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(10, 22, 40, 0.1);
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 500px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0A1628;
+        }
+
+        .color-code {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #0A1628;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SleepQ Social Media Graphics</h1>
+            <p class="tagline">Professional marketing assets for all platforms</p>
+        </header>
+
+        <h2 class="section-title">Design System</h2>
+        <div class="color-palette">
+            <div class="color-swatch">
+                <div class="swatch" style="background: #0A1628;"></div>
+                <div class="color-name">Deep Navy</div>
+                <div class="color-code">#0A1628</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch" style="background: #F5A623;"></div>
+                <div class="color-name">Warm Orange</div>
+                <div class="color-code">#F5A623</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch" style="background: #4A90D9;"></div>
+                <div class="color-name">Professional Blue</div>
+                <div class="color-code">#4A90D9</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
+                <div class="color-name">White</div>
+                <div class="color-code">#FFFFFF</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Marketing Graphics</h2>
+        <div class="grid">
+            <!-- Instagram Carousel 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">App Launch Teaser</div>
+                    <div class="card-subtitle">Instagram Carousel Post</div>
+                </div>
+                <div class="card-content">
+                    <div class="specs">
+                        <div class="spec">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">1080x1080px</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Format:</span>
+                            <span class="spec-value">Square</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">File:</span>
+                            <span class="spec-value">social-instagram-carousel-1.html</span>
+                        </div>
+                    </div>
+                    <p class="description">Launch teaser with dark gradient background, star pattern, and dashboard preview. Eye-catching headline with CTA to waitlist.</p>
+                    <ul class="feature-list">
+                        <li>Subtle star pattern background</li>
+                        <li>Phone mockup with IMG_0312.png</li>
+                        <li>Orange accent glow line</li>
+                        <li>Professional typography</li>
+                    </ul>
+                    <a href="social-instagram-carousel-1.html" class="btn">View Design</a>
+                </div>
+            </div>
+
+            <!-- Instagram Carousel 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Meet Your AI Coach</div>
+                    <div class="card-subtitle">Instagram Carousel Post</div>
+                </div>
+                <div class="card-content">
+                    <div class="specs">
+                        <div class="spec">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">1080x1080px</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Format:</span>
+                            <span class="spec-value">Square</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">File:</span>
+                            <span class="spec-value">social-instagram-carousel-2.html</span>
+                        </div>
+                    </div>
+                    <p class="description">Feature highlight with centered phone mockup and feature bullets. Engaging with emoji icons and action CTA.</p>
+                    <ul class="feature-list">
+                        <li>Centered phone mockup</li>
+                        <li>Feature icons with descriptions</li>
+                        <li>Coach interface screenshot</li>
+                        <li>Orange CTA button</li>
+                    </ul>
+                    <a href="social-instagram-carousel-2.html" class="btn">View Design</a>
+                </div>
+            </div>
+
+            <!-- Facebook Ad -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Stop Guessing</div>
+                    <div class="card-subtitle">Facebook/Meta Ad</div>
+                </div>
+                <div class="card-content">
+                    <div class="specs">
+                        <div class="spec">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">1200x628px</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Format:</span>
+                            <span class="spec-value">Landscape</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">File:</span>
+                            <span class="spec-value">social-facebook-ad.html</span>
+                        </div>
+                    </div>
+                    <p class="description">Split layout with compelling value proposition on left, phone mockup on right. Includes CTA button and footer info bar.</p>
+                    <ul class="feature-list">
+                        <li>Dark gradient left section</li>
+                        <li>Phone mockup on right</li>
+                        <li>Hover effects on button</li>
+                        <li>Footer with website info</li>
+                    </ul>
+                    <a href="social-facebook-ad.html" class="btn">View Design</a>
+                </div>
+            </div>
+
+            <!-- Twitter Post -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">One Experiment Away</div>
+                    <div class="card-subtitle">Twitter/X Post</div>
+                </div>
+                <div class="card-content">
+                    <div class="specs">
+                        <div class="spec">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">1600x900px</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Format:</span>
+                            <span class="spec-value">Wide</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">File:</span>
+                            <span class="spec-value">social-twitter-post.html</span>
+                        </div>
+                    </div>
+                    <p class="description">Quote-style design with inspirational copy on left and dual overlapping phone mockups on right. Professional bottom branding bar.</p>
+                    <ul class="feature-list">
+                        <li>Large inspirational quote</li>
+                        <li>Overlapping phone screens</li>
+                        <li>Professional bottom bar</li>
+                        <li>Accent glow effect</li>
+                    </ul>
+                    <a href="social-twitter-post.html" class="btn">View Design</a>
+                </div>
+            </div>
+
+            <!-- LinkedIn Post -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Performance Hack</div>
+                    <div class="card-subtitle">LinkedIn Post</div>
+                </div>
+                <div class="card-content">
+                    <div class="specs">
+                        <div class="spec">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">1200x627px</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Format:</span>
+                            <span class="spec-value">Professional</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">File:</span>
+                            <span class="spec-value">social-linkedin-post.html</span>
+                        </div>
+                    </div>
+                    <p class="description">Professional light background with dark header, stats container, and compelling copy. Small phone mockup on right side for visual proof.</p>
+                    <ul class="feature-list">
+                        <li>Dark navy header section</li>
+                        <li>Stats display container</li>
+                        <li>Light professional background</li>
+                        <li>Small phone mockup</li>
+                    </ul>
+                    <a href="social-linkedin-post.html" class="btn">View Design</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>SleepQ Marketing Materials</strong> • Created April 3, 2026</p>
+            <p>All files are self-contained HTML documents with inline CSS. Open in any modern web browser to preview. Export to PNG/JPG using browser screenshot or print-to-PDF features.</p>
+            <p>Font: Inter (Google Fonts) • Brand Colors: #0A1628, #F5A623, #4A90D9, #FFFFFF</p>
+        </div>
+    </div>
+</body>
+</html>

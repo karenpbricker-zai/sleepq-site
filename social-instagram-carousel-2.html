@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepQ - Meet Your AI Coach</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #0A1628 0%, #162d4a 50%, #0A1628 100%);
+        }
+
+        /* Main content */
+        .content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 50px;
+            z-index: 2;
+        }
+
+        /* Top headline */
+        .headline {
+            font-size: 56px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Center phone mockup */
+        .phone-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            height: 500px;
+            background: #000;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 12px #1a1a1a;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-screen {
+            width: 90%;
+            height: 95%;
+            background-size: cover;
+            background-position: center;
+            background-image: url('../IMG_0317.png');
+            border-radius: 35px;
+        }
+
+        /* Features section */
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .feature {
+            font-size: 18px;
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: 0.2px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        /* Bottom section */
+        .bottom-section {
+            text-align: center;
+            width: 100%;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #F5A623;
+            color: #0A1628;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 24px rgba(245, 166, 35, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(245, 166, 35, 0.4);
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="headline">Meet Your AI Sleep Coach</h1>
+
+            <div class="phone-section">
+                <div class="phone-mockup">
+                    <div class="phone-screen"></div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🧠</span>
+                    <span>Personalized insights</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🧪</span>
+                    <span>Guided experiments</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📊</span>
+                    <span>Track your progress</span>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="tagline">SleepQ — Master Your Rest</div>
+                <div class="cta-button">Link in bio</div>
+            </div>
+        </div>
+
+        <div class="watermark">SLEEPQ</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepQ - Medium Rectangle Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .banner-container {
+            width: 300px;
+            height: 250px;
+            background: linear-gradient(135deg, #0A1628 0%, #0F1E35 50%, #132847 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 16px;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background accent */
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(74, 144, 217, 0.15) 0%, transparent 70%);
+            animation: drift 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* Headline */
+        .headline {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* Phone Mockup Container */
+        .phone-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            perspective: 1000px;
+        }
+
+        .phone-mockup {
+            width: 85px;
+            height: 140px;
+            background: #000;
+            border-radius: 12px;
+            padding: 5px;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            border: 2px solid #1a1a1a;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: rotateY(-12deg) rotateX(3deg);
+        }
+
+        .phone-mockup img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Notch effect for iPhone */
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 6px;
+            background: #000;
+            border-radius: 0 0 8px 8px;
+            z-index: 10;
+        }
+
+        /* Features List */
+        .features {
+            position: relative;
+            z-index: 1;
+            font-size: 11px;
+            font-weight: 500;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        .features-item {
+            margin: 3px 0;
+        }
+
+        /* Bottom CTA Section */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cta-button {
+            background-color: #F5A623;
+            color: #0A1628;
+            border: none;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(245, 166, 35, 0.4);
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background-color: #F5B640;
+            box-shadow: 0 5px 16px rgba(245, 166, 35, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .url {
+            font-size: 10px;
+            color: #4A90D9;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <h2 class="headline">Your AI Sleep Coach Is Ready</h2>
+
+        <div class="phone-container">
+            <div class="phone-mockup">
+                <img src="images/IMG_0317.png" alt="AI Sleep Coach">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="features-item">✓ Personalized insights</div>
+            <div class="features-item">✓ Sleep experiments</div>
+            <div class="features-item">✓ Weekly reports</div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button">Join Free Waitlist</button>
+            <div class="url">sleepqapp.com</div>
+        </div>
+    </div>
+</body>
+</html>

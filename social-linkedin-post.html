@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepQ - LinkedIn Post</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 1200px;
+            height: 627px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F0F4F8 0%, #FFFFFF 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header section */
+        .header {
+            background: linear-gradient(90deg, #0A1628 0%, #1a2f4d 100%);
+            padding: 40px 60px;
+            color: #FFFFFF;
+            position: relative;
+            z-index: 2;
+        }
+
+        .headline {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        /* Main content section */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        /* Left side - stats and copy */
+        .left-side {
+            flex: 1;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Stats strip */
+        .stats-container {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            background: #0A1628;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(10, 22, 40, 0.1);
+        }
+
+        .stat {
+            flex: 1;
+            padding: 20px 24px;
+            text-align: center;
+            border-right: 1px solid rgba(245, 166, 35, 0.2);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #F5A623;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Body copy */
+        .body-copy {
+            font-size: 16px;
+            color: #0A1628;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* CTA section */
+        .cta-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(10, 22, 40, 0.1);
+        }
+
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #0A1628;
+            font-size: 14px;
+        }
+
+        .logo-mark {
+            width: 20px;
+            height: 20px;
+            background: #F5A623;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: #0A1628;
+        }
+
+        .cta-link {
+            font-size: 14px;
+            color: #4A90D9;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Right side - phone mockup */
+        .right-side {
+            flex: 0.5;
+            background: linear-gradient(135deg, rgba(74, 144, 217, 0.1) 0%, rgba(245, 166, 35, 0.05) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 30px;
+            border-left: 1px solid rgba(10, 22, 40, 0.08);
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 160px;
+            height: 320px;
+            background: #000;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(10, 22, 40, 0.15), inset 0 0 0 8px #1a1a1a;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-screen {
+            width: 92%;
+            height: 96%;
+            background-size: cover;
+            background-position: center;
+            background-image: url('../IMG_0315.png');
+            border-radius: 24px;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 10px;
+            color: rgba(10, 22, 40, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Decorative accent */
+        .accent-corner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -80px;
+            right: -80px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="accent-corner"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1 class="headline">Sleep Is the #1 Performance Hack You're Ignoring</h1>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Left side -->
+            <div class="left-side">
+                <!-- Stats -->
+                <div class="stats-container">
+                    <div class="stat">
+                        <div class="stat-value">90%</div>
+                        <div class="stat-label">Sleep Efficiency</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">87/100</div>
+                        <div class="stat-label">Weekly Score</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">7h 5m</div>
+                        <div class="stat-label">Total Sleep</div>
+                    </div>
+                </div>
+
+                <!-- Body copy -->
+                <p class="body-copy">SleepQ uses AI and behavioral science to coach you to better sleep — one experiment at a time.</p>
+
+                <!-- CTA -->
+                <div class="cta-section">
+                    <div class="logo-badge">
+                        <div class="logo-mark">Q</div>
+                        <span>SleepQ</span>
+                    </div>
+                    <span style="color: rgba(10, 22, 40, 0.3); font-weight: 300;">|</span>
+                    <a href="#" class="cta-link">Join the waitlist at sleepqapp.com</a>
+                </div>
+            </div>
+
+            <!-- Right side -->
+            <div class="right-side">
+                <div class="phone-mockup">
+                    <div class="phone-screen"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="watermark">SLEEPQ</div>
+    </div>
+</body>
+</html>
