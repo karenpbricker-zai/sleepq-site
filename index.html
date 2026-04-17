@@ -3,123 +3,1707 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SleepQ - Better Sleep Starts Here</title>
-    <meta name="description" content="Track, understand, and improve your sleep with SleepQ. Personalized insights powered by Apple Health.">
-    <link rel="icon" type="image/png" href="icon.png">
-    <link rel="apple-touch-icon" href="icon.png">
-    <meta property="og:title" content="SleepQ - Better Sleep Starts Here">
-    <meta property="og:description" content="Track, understand, and improve your sleep with SleepQ.">
-    <meta property="og:image" content="https://sleepq.app/icon.png">
-    <meta property="og:url" content="https://sleepq.app">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" href="style.css">
+    <title>SleepQ - Master Your Rest with an AI Sleep Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-dark: #0A1628;
+            --color-mid: #1A2744;
+            --color-accent: #F5A623;
+            --color-secondary: #4A90D9;
+            --color-text-light: #FFFFFF;
+            --color-text-dark: #1A2744;
+            --color-bg-light: #F0F4F8;
+            --color-success: #4CD964;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-q {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-cta {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            background: #E59514;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-logo {
+                width: 100%;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-mid) 100%);
+            color: var(--color-text-light);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 144, 217, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -50px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #E59514;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 166, 35, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text-light);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(245, 166, 35, 0.1);
+        }
+
+        .phone-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            height: 580px;
+            background: #000;
+            border-radius: 50px;
+            border: 8px solid #1a1a1a;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                        0 0 1px 1px rgba(255, 255, 255, 0.1) inset,
+                        0 0 0 0.5px rgba(0, 0, 0, 0.4) inset;
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-frame img,
+        .phone-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .badge::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(20px) translateX(10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                transform: scale(0.85);
+            }
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: var(--color-bg-light);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: rgba(26, 39, 68, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: #f0f0f0;
+        }
+
+        .feature-image img,
+        .feature-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+
+        .feature-card p {
+            color: rgba(26, 39, 68, 0.7);
+            line-height: 1.7;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-mid) 100%);
+            color: var(--color-text-light);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -200px;
+        }
+
+        .steps-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.3), transparent);
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .steps::before {
+                display: block;
+            }
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 16px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .step:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .how-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .how-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SHOWCASE SECTION ===== */
+        .showcase {
+            padding: 5rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .showcase-scroll {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 2rem 0;
+            margin: 0 auto;
+            max-width: 1400px;
+            scroll-behavior: smooth;
+        }
+
+        .showcase-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .showcase-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        .showcase-scroll::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 10px;
+        }
+
+        .showcase-item {
+            flex: 0 0 300px;
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .showcase-phone {
+            width: 240px;
+            height: 500px;
+            background: #000;
+            border-radius: 40px;
+            border: 7px solid #1a1a1a;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .showcase-phone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: #000;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+
+        .showcase-phone img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .showcase-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== SCIENCE SECTION ===== */
+        .science {
+            background: var(--color-bg-light);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .element-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .element-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .element-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .element-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        .experiments-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experiments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experiment-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .experiment-card:nth-child(2) {
+            border-left-color: var(--color-secondary);
+            animation-delay: 0.1s;
+        }
+
+        .experiment-card:nth-child(3) {
+            border-left-color: var(--color-success);
+            animation-delay: 0.2s;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .experiment-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .experiment-duration {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experiment-description {
+            color: rgba(26, 39, 68, 0.7);
+            line-height: 1.6;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-mid) 100%);
+            color: var(--color-text-light);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 144, 217, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -250px;
+            right: -100px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stars {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-text-light);
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.3rem;
+        }
+
+        .testimonial-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            background: var(--color-bg-light);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .pricing-card:nth-child(3) {
+            animation-delay: 0.2s;
+            border-color: var(--color-accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: none;
+        }
+
+        .pricing-card:nth-child(3) .pricing-badge {
+            display: block;
+        }
+
+        .pricing-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: rgba(26, 39, 68, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-description {
+            color: rgba(26, 39, 68, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.7rem 0;
+            color: rgba(26, 39, 68, 0.7);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(26, 39, 68, 0.1);
+        }
+
+        .pricing-features li::before {
+            content: '✓ ';
+            color: var(--color-success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:nth-child(1) .pricing-cta,
+        .pricing-card:nth-child(2) .pricing-cta {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .pricing-card:nth-child(1) .pricing-cta:hover,
+        .pricing-card:nth-child(2) .pricing-cta:hover {
+            background: #E59514;
+            transform: translateY(-2px);
+        }
+
+        .pricing-card:nth-child(3) .pricing-cta {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .pricing-card:nth-child(3) .pricing-cta:hover {
+            background: #E59514;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+        }
+
+        /* ===== WAITLIST CTA ===== */
+        .waitlist-cta {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-mid) 100%);
+            color: var(--color-text-light);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .waitlist-cta::before {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -200px;
+        }
+
+        .waitlist-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .waitlist-cta h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .waitlist-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.85);
+            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            flex-wrap: wrap;
+        }
+
+        .waitlist-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .waitlist-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .waitlist-submit {
+            padding: 1rem 2.5rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .waitlist-submit:hover {
+            background: #E59514;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+        }
+
+        .waitlist-privacy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .waitlist-input,
+            .waitlist-submit {
+                width: 100%;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-text-light);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-section ul a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                margin-top: 50px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .features,
+            .how-it-works,
+            .science,
+            .testimonials,
+            .pricing,
+            .waitlist-cta {
+                padding: 3rem 1rem;
+            }
+
+            .trust-badges {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .steps {
+                gap: 1.5rem;
+            }
+
+            .waitlist-cta h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.6rem;
+                line-height: 1.3;
+            }
+
+            .phone-frame {
+                width: 220px;
+                height: 450px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .features-grid,
+            .experiments-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card:nth-child(3) {
+                transform: scale(1);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- NAVIGATION -->
     <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo"><img src="icon.png" alt="" class="logo-icon">SleepQ</a>
-            <div class="nav-links">
-                <a href="support.html">Support</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
-            </div>
+        <div class="nav-logo">
+            Sleep<span class="nav-logo-q">Q</span>
         </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#science">Science</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><button class="nav-cta" onclick="document.querySelector('.waitlist-input').focus(); document.querySelector('.waitlist-input').scrollIntoView({behavior: 'smooth'});">Join Waitlist</button></li>
+        </ul>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Better sleep starts with <span class="highlight">better data</span></h1>
-                    <p class="subtitle">SleepQ analyzes your Apple Health data to reveal patterns, coach your habits, and help you wake up refreshed — every day.</p>
-                    <div class="cta-buttons">
-                        <a href="#" class="btn btn-primary">Download on the App Store</a>
-                        <a href="#how-it-works" class="btn btn-secondary">How it works</a>
-                    </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Master Your Rest with a Coach in Your Pocket</h1>
+                <p>SleepQ analyzes your sleep patterns and guides you through science-backed experiments to transform your nights. Your personal AI Sleep Coach is ready.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.querySelector('.waitlist-input').focus(); document.querySelector('.waitlist-input').scrollIntoView({behavior: 'smooth'});">Join the Waitlist</button>
+                    <button class="btn-secondary">Watch Demo</button>
                 </div>
-                <div class="phone-mockup">
+            </div>
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="sleepqapp.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+        <div class="trust-badges">
+            <div class="badge">Apple Health Integration</div>
+            <div class="badge">AI-Powered Coach</div>
+            <div class="badge">Science-Backed Methods</div>
+            <div class="badge">Privacy First</div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Your Complete Sleep System</h2>
+            <p>Everything you need to understand and improve your sleep, all in one intelligent app</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-on-scroll">
+                <div class="feature-image">
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="marketing/images/TodayView.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <h3>Smart Sleep Dashboard</h3>
+                <p>Every morning, SleepQ greets you with a clear picture of last night's sleep — a single score, a summary, and the key metrics that stood out, all measured against your personal baseline. Underneath, we identify what likely drove your sleep quality — whether it was late caffeine, stress you logged the night before, or a pattern it detected in your health data — and gives you one specific thing to try tonight. Premium users can tap deeper into a full daily analysis for detailed element-by-element scoring and tailored recommendations, and every bit of context you share makes the next morning's insights sharper.</p>
+            </div>
+
+            <div class="feature-card fade-on-scroll">
+                <div class="feature-image">
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="marketing/images/Coach.mov" type="video/mp4">
+                    </video>
+                </div>
+                <h3>AI Sleep Coach</h3>
+                <p>Your AI sleep coach is always ready to chat — just open the conversation and ask about last night's sleep, or tap a suggested topic like "Improve deep sleep" to get started. Every response draws from your actual sleep data, health metrics, personal profile, and the context you logged the night before — so the advice is specific to you, not generic tips. As you type, your coach streams back personalized guidance in real time, remembering everything you've discussed so its insights get sharper with each conversation. Turn on voice mode and watch the animated avatar come to life as it talks you through what happened overnight and what to try next.</p>
+            </div>
+
+            <div class="feature-card fade-on-scroll">
+                <div class="feature-image">
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="marketing/images/WeekReport.mov" type="video/mp4">
+                    </video>
+                </div>
+                <h3>Progress Tracking</h3>
+                <p>Every week, your Progress screen delivers a full report on how your sleep is trending — with an overall score compared against your personal baseline, so you can see exactly how far you've come. An interactive chart plots your weekly scores over time, making it easy to spot patterns and tap any week for a detailed breakdown. Each report includes an AI-written summary, highlights of what went well, personalized recommendations, and concrete actions to keep improving. Drill into individual sleep elements — duration, efficiency, recovery, and more — each scored and tracked week over week so nothing slips through the cracks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="steps-container">
+            <div class="section-header" style="color: white; margin-bottom: 3rem;">
+                <h2 style="color: white;">Transform Your Sleep in 3 Steps</h2>
+            </div>
+
+            <div class="steps">
+                <div class="step fade-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Track Your Sleep</h3>
+                    <p>Connect Apple Health and let SleepQ build your personal sleep profile with metrics that matter to your goals.</p>
+                </div>
+
+                <div class="step fade-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Run Experiments</h3>
+                    <p>Try science-backed challenges like Evening Stress Dump, Screen Cutoff, or Wake-Time Anchor — 3 to 7 days each.</p>
+                </div>
+
+                <div class="step fade-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>See Results</h3>
+                    <p>Watch your sleep score improve. Get weekly reports with clear insights and personalized next steps.</p>
+                </div>
+            </div>
+
+            <div class="how-showcase">
+                <div class="phone-mockup fade-on-scroll" style="justify-self: center;">
                     <div class="phone-frame">
                         <video autoplay muted loop playsinline preload="metadata">
-                            <source src="sleepqapp.mp4" type="video/mp4">
+                            <source src="marketing/images/Weekreport-day.mov" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="phone-mockup fade-on-scroll" style="justify-self: center;">
+                    <div class="phone-frame">
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="marketing/images/Experiment-day.mov" type="video/mp4">
                         </video>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="features-section">
-            <div class="container">
-                <div class="section-heading">
-                    <h2>Everything you need to sleep smarter</h2>
-                    <p>Powerful insights, beautifully simple.</p>
+    <!-- APP SHOWCASE -->
+    <section class="showcase">
+        <div class="section-header">
+            <h2>Every Screen Designed for Better Sleep</h2>
+            <p>Explore the complete SleepQ experience</p>
+        </div>
+
+        <div class="showcase-scroll">
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0312.png" alt="Dashboard Dark Mode">
                 </div>
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/></svg>
-                        </div>
-                        <h3>Sleep Tracking</h3>
-                        <p>Monitor your sleep patterns with detailed insights drawn directly from Apple Health.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        </div>
-                        <h3>Smart Insights</h3>
-                        <p>Understand your REM, deep sleep, and recovery patterns with clear, personalized reports.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg>
-                        </div>
-                        <h3>AI Coach</h3>
-                        <p>Get personalized recommendations that adapt to your habits and help you sleep better over time.</p>
-                    </div>
-                </div>
+                <div class="showcase-label">Dashboard Dark</div>
             </div>
-        </section>
 
-        <section class="how-it-works" id="how-it-works">
-            <div class="container">
-                <div class="section-heading">
-                    <h2>How it works</h2>
-                    <p>Four steps to better sleep.</p>
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0313.png" alt="Dashboard Detail">
                 </div>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Connect Apple Health</h3>
-                        <p>Grant SleepQ access to the sleep metrics you already track with your iPhone, Apple Watch, Oura Ring, or other trackers.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Get daily insights</h3>
-                        <p>Wake up to a personalized sleep score and recommendations tailored to your body and schedule.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Weekly analyze</h3>
-                        <p>Every week, SleepQ delivers a deep-dive review of your trends, patterns, and what's actually moving the needle.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Run experiments</h3>
-                        <p>Test habit changes — like caffeine cutoffs or bedtime shifts — and let SleepQ measure the impact on your sleep.</p>
-                    </div>
-                </div>
+                <div class="showcase-label">Sleep Assessment</div>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 SleepQ. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="support.html">Support</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0314.png" alt="Progress View">
+                </div>
+                <div class="showcase-label">Progress Tracking</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0315.png" alt="Weekly Report">
+                </div>
+                <div class="showcase-label">Weekly Report</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0316.png" alt="Experiment Results">
+                </div>
+                <div class="showcase-label">Experiment Results</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0317.png" alt="Coach Dark Mode">
+                </div>
+                <div class="showcase-label">AI Coach Dark</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0318.png" alt="Profile Dark Mode">
+                </div>
+                <div class="showcase-label">Profile Dark</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0326.png" alt="Coach Light Mode">
+                </div>
+                <div class="showcase-label">AI Coach Light</div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-phone">
+                    <img src="marketing/images/IMG_0327.png" alt="Profile Light Mode">
+                </div>
+                <div class="showcase-label">Profile Light</div>
             </div>
         </div>
+    </section>
+
+    <!-- SCIENCE SECTION -->
+    <section class="science" id="science">
+        <div class="section-header">
+            <h2>10 Elements. 9 Experiments. One Better Night.</h2>
+            <p>Science-backed sleep improvement based on evidence and proven methods</p>
+        </div>
+
+        <div class="elements-grid">
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">📅</div>
+                <h4>Schedule Consistency</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">⏱️</div>
+                <h4>Sleep Duration</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🌙</div>
+                <h4>Sleep Environment</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">☀️</div>
+                <h4>Circadian Alignment</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🧘</div>
+                <h4>Pre-Sleep Routine</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🥗</div>
+                <h4>Substances & Meals</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🧠</div>
+                <h4>Stress & Mental Load</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🏃</div>
+                <h4>Activity Balance</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">🛏️</div>
+                <h4>Bed-Sleep Association</h4>
+            </div>
+            <div class="element-card fade-on-scroll">
+                <div class="element-icon">❤️</div>
+                <h4>Physiological Recovery</h4>
+            </div>
+        </div>
+
+        <div class="experiments-section" style="margin-top: 4rem;">
+            <div class="section-header">
+                <h3 style="font-size: 1.8rem; margin-bottom: 3rem;">Featured Experiments</h3>
+            </div>
+
+            <div class="experiments-grid">
+                <div class="experiment-card fade-on-scroll">
+                    <div class="experiment-title">Evening Stress Dump</div>
+                    <div class="experiment-duration">5 nights</div>
+                    <div class="experiment-description">Spend 5 minutes writing down tomorrow's concerns and tasks before bed. Clear your mind to reduce racing thoughts and anxiety that keep you awake.</div>
+                </div>
+
+                <div class="experiment-card fade-on-scroll">
+                    <div class="experiment-title">Light Exposure Shift</div>
+                    <div class="experiment-duration">7 days</div>
+                    <div class="experiment-description">Get morning daylight within 1 hour of waking. This powerful circadian signal helps regulate your sleep-wake cycle and improves nighttime sleep quality.</div>
+                </div>
+
+                <div class="experiment-card fade-on-scroll">
+                    <div class="experiment-title">Screen Cutoff Test</div>
+                    <div class="experiment-duration">5 days</div>
+                    <div class="experiment-description">No screens 45 minutes before bed. Blue light suppresses melatonin production. This experiment helps your body naturally prepare for sleep.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header" style="color: white; margin-bottom: 3rem;">
+            <h2 style="color: white;">Loved by Beta Testers</h2>
+            <p style="color: rgba(255, 255, 255, 0.8);">Hear from early users transforming their sleep</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-on-scroll">
+                <div class="stars">★★★★★</div>
+                <div class="testimonial-text">"I've tried everything for my sleep, but SleepQ's coaching approach actually made sense of the data. My sleep has improved 30% in just 6 weeks."</div>
+                <div class="testimonial-author">Sarah Chen</div>
+                <div class="testimonial-role">Early Beta Tester</div>
+            </div>
+
+            <div class="testimonial-card fade-on-scroll">
+                <div class="stars">★★★★★</div>
+                <div class="testimonial-text">"The AI coach is like having a sleep specialist in my pocket. It explains why things matter and helps me experiment safely. Finally understanding my sleep!"</div>
+                <div class="testimonial-author">Marcus Thompson</div>
+                <div class="testimonial-role">Sleep Enthusiast</div>
+            </div>
+
+            <div class="testimonial-card fade-on-scroll">
+                <div class="stars">★★★★★</div>
+                <div class="testimonial-text">"What impressed me most was how science-backed everything is. No pseudoscience, just real experiments that work. My REM sleep increased by 22%."</div>
+                <div class="testimonial-author">Dr. Lisa Rodriguez</div>
+                <div class="testimonial-role">Sleep Researcher</div>
+            </div>
+        </div>
+
+        <div class="testimonial-note fade-on-scroll">From our beta testing community</div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Choose the plan that's right for you</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card fade-on-scroll">
+                <div class="pricing-name">Free</div>
+                <div class="pricing-price">$0</div>
+                <div class="pricing-period">Forever</div>
+                <div class="pricing-description">Get started with essential sleep tracking</div>
+                <ul class="pricing-features">
+                    <li>Basic sleep tracking</li>
+                    <li>Profile settings</li>
+                </ul>
+                <button class="pricing-cta">Get Started</button>
+            </div>
+
+            <div class="pricing-card fade-on-scroll">
+                <div class="pricing-name">Premium Monthly</div>
+                <div class="pricing-price">$3.99</div>
+                <div class="pricing-period">/month</div>
+                <div class="pricing-description">Unlock the full coaching experience</div>
+                <ul class="pricing-features">
+                    <li>Everything in Free</li>
+                    <li>Unlimited AI Coach</li>
+                    <li>All 9 experiments</li>
+                    <li>Detailed analytics</li>
+                    <li>Weekly reports & insights</li>
+                </ul>
+                <button class="pricing-cta">Start Free Trial</button>
+            </div>
+
+            <div class="pricing-card fade-on-scroll">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-name">Premium Annual</div>
+                <div class="pricing-price">$39.99</div>
+                <div class="pricing-period">/year</div>
+                <div class="pricing-description">Best value — save 20% on monthly</div>
+                <ul class="pricing-features">
+                    <li>Everything in Premium</li>
+                    <li>Priority feature access</li>
+                    <li>Email sleep support</li>
+                    <li>Ad-free experience</li>
+                </ul>
+                <button class="pricing-cta">Start Free Trial</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAITLIST CTA -->
+    <section class="waitlist-cta" id="waitlist">
+        <div class="waitlist-content">
+            <h2>Be First to Transform Your Sleep</h2>
+            <p>Join 5,000+ people on the waitlist. Early members get 1 month Premium free.</p>
+            <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
+                <input type="email" class="waitlist-input" placeholder="Enter your email" required>
+                <button type="submit" class="waitlist-submit">Join Waitlist</button>
+            </form>
+            <div class="waitlist-privacy">We respect your privacy. Unsubscribe anytime.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SleepQ</h4>
+                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Your personal AI Sleep Coach, powered by science.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">📱</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">💼</a>
+                    <a href="#" class="social-icon">📺</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#science">Science</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">GDPR</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 SleepQ. All rights reserved. | Helping the world sleep better.
+        </div>
     </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Waitlist form handler
+        function handleWaitlistSubmit(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('.waitlist-input').value;
+            // In production, send to backend
+            alert(`Thanks for signing up! We'll notify ${email} when SleepQ launches.`);
+            e.target.reset();
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+            }
+        });
+    </script>
 </body>
 </html>
