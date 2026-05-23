@@ -328,6 +328,10 @@
     .footer-head { grid-template-columns: 1fr 1fr; }
     .section { padding: 80px 32px; }
     .section.hero { padding: 0 32px 60px; }
+    .section.comparison,
+    .section.testimonials,
+    .section.final-cta { padding: 80px 32px; }
+    .section.footer { padding: 60px 32px 40px; }
     .fc-title { font-size: 40px; }
   }
   @media (max-width: 640px) {
@@ -374,7 +378,8 @@
           <span class="trust-item"><i class="ph-fill ph-check-circle"></i> Free month of Premium at launch</span>
         </div>
         <div class="store-row">
-          <a class="store-btn" href="#" aria-label="Download on the App Store">
+          <!-- Pre-launch: scrolls to waitlist. Swap href to App Store URL after launch. -->
+          <a class="store-btn" href="#waitlist" aria-label="Download on the App Store">
             <i class="ph-fill ph-apple-logo"></i>
             <span class="label">
               <small>Download on the</small>
