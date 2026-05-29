@@ -4858,7 +4858,13 @@
                           "ref": "YytXs",
                           "width": 48,
                           "height": 48,
-                          "cornerRadius": 10
+                          "cornerRadius": 10,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "icon.png",
+                            "mode": "fill"
+                          }
                         }
                       ]
                     },
@@ -5339,7 +5345,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "mockupV3.png",
+                        "url": "hero-phone.png",
                         "mode": "fill"
                       },
                       "width": 358,
@@ -5832,7 +5838,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "mock_results2-1.png",
+                        "url": "exp-phone.png",
                         "mode": "fill"
                       },
                       "width": 473,
@@ -8187,7 +8193,7 @@
               "type": "image",
               "opacity": 0.1,
               "enabled": true,
-              "url": "images/img_bg_splash.png",
+              "url": "img_bg_splash.png",
               "mode": "fill"
             },
             {
@@ -8502,7 +8508,13 @@
                               "ref": "YytXs",
                               "width": 48,
                               "height": 48,
-                              "cornerRadius": 10
+                              "cornerRadius": 10,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "icon.png",
+                                "mode": "fill"
+                              }
                             }
                           ]
                         },

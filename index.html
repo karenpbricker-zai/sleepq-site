@@ -4,6 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>SleepQ — Your sleep, finally actionable.</title>
+<meta name="description" content="SleepQ is your AI sleep coach. It runs personalized 7-night experiments on your nights, then tells you exactly what's moving your numbers." />
+<meta property="og:title" content="SleepQ — Your sleep, finally actionable." />
+<meta property="og:description" content="Your AI sleep coach. Personalized experiments, real numbers, deeper nights." />
+<meta property="og:image" content="icon.png" />
+<meta name="theme-color" content="#0b1b24" />
+<link rel="icon" href="icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -14,26 +20,33 @@
     --bg: #0b1b24;
     --bg-2: #0f262d;
     --surface: #174357;
+    --surface-2: #476470;
     --divider: #476470;
     --text: #ffffff;
     --muted: #bee2e0;
+    --accent: #5baea8;
     --teal: #5baea8;
     --teal-soft: #86bfb8;
-    --teal-bright: #86cfb8;
+    --green: #86cfb8;
     --coral: #e27a6e;
     --purple: #b8a3d9;
     --orange: #f0b48a;
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  .page { max-width: 1440px; margin: 0 auto; }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--teal-soft); outline-offset: 3px; border-radius: 4px; }
+
+  .page { width: 100%; }
   .serif { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; }
   .eyebrow {
     color: var(--teal);
@@ -43,18 +56,25 @@
     text-transform: uppercase;
   }
   .muted { color: var(--muted); }
-  .section { padding: 120px 80px; }
-  .section.hero { padding: 0 64px 100px; }
-  .section.comparison, .section.testimonials { padding: 100px 80px; }
-  .section.final-cta { padding: 120px 64px; }
-  .section.footer { padding: 60px 64px 40px; }
-  .grad-a { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  /* Full-bleed background; content centered to a 1280px max via the gutter formula */
+  .section {
+    --gutter: 80px;
+    padding-block: 120px;
+    padding-inline: max(var(--gutter), calc((100% - 1280px) / 2));
+  }
+  .section.hero { --gutter: 64px; padding-block: 0 100px; }
+  .section.comparison, .section.testimonials, .section.faq { padding-block: 100px; }
+  .section.final-cta { --gutter: 64px; padding-block: 120px; }
+  .section.footer { --gutter: 64px; padding-block: 60px 40px; }
+  .grad-a { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
   .grad-b { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
   .row { display: flex; }
   .col { display: flex; flex-direction: column; }
-  .center { align-items: center; }
-  .justify-center { justify-content: center; }
-  .justify-between { justify-content: space-between; }
   .text-center { text-align: center; }
 
   /* Pills, badges, buttons */
@@ -63,6 +83,13 @@
     background: var(--surface); color: var(--text);
     padding: 10px 18px; border-radius: 999px;
     font-size: 16px; font-weight: 600;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    align-self: flex-start;
+    background: var(--bg); color: var(--text);
+    padding: 10px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; line-height: 1;
   }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -73,30 +100,44 @@
     transition: transform .15s ease, opacity .15s ease;
   }
   .btn:hover { transform: translateY(-1px); opacity: .92; }
-  .btn-ghost {
-    background: var(--divider); color: var(--text);
-  }
+  .btn-ghost { background: var(--surface-2); color: var(--text); }
 
   /* Brand */
-  .brand { display: inline-flex; align-items: center; gap: 12px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
   .logo {
-    width: 48px; height: 48px; border-radius: 10px;
-    background: linear-gradient(135deg, #5baea8, #b8a3d9);
-    display: inline-flex; align-items: center; justify-content: center;
-    color: var(--bg); font-family: "DM Serif Display"; font-size: 24px;
+    width: 48px; height: 48px; border-radius: 10px; display: block;
+    object-fit: cover;
   }
   .brand-name { font-family: "DM Serif Display"; font-size: 30px; color: var(--text); }
 
+  /* App store badges */
+  .store-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .store-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #000; color: #fff;
+    padding: 10px 16px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.18);
+    text-decoration: none; line-height: 1;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .store-btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.35); }
+  .store-btn i { font-size: 28px; }
+  .store-btn .label { display: flex; flex-direction: column; gap: 2px; }
+  .store-btn .label small { font-size: 10px; opacity: .9; font-weight: 500; }
+  .store-btn .label strong { font-size: 16px; font-weight: 700; }
+
   /* Nav */
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 40px 0; gap: 24px; }
+  .nav-center { display: flex; align-items: center; gap: 36px; }
   .nav-right { display: flex; align-items: center; gap: 24px; }
   .nav-link { color: var(--muted); font-weight: 600; font-size: 18px; text-decoration: none; }
+  .nav-link:hover { color: var(--text); }
 
   /* Hero */
-  .hero-body { display: flex; gap: 32px; align-items: center; }
-  .hero-l { display: flex; flex-direction: column; gap: 28px; flex: 1; min-width: 0; max-width: 720px; }
-  .hero-title { font-size: 64px; line-height: 1; margin: 0; }
-  .hero-sub { color: var(--muted); font-size: 22px; line-height: 1.45; font-weight: 500; margin: 0; }
+  .hero-body { display: flex; gap: 48px; align-items: center; }
+  .hero-l { display: flex; flex-direction: column; gap: 32px; flex: 1 1 560px; min-width: 0; max-width: 860px; }
+  .hero-title { font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1.05; margin: 0; }
+  .hero-sub { color: var(--muted); font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); line-height: 1.5; font-weight: 500; margin: 0; }
   .email-form {
     display: flex; align-items: center; gap: 12px;
     background: var(--surface); border-radius: 999px;
@@ -110,36 +151,28 @@
   .trust-row { display: flex; gap: 24px; flex-wrap: wrap; }
   .trust-item { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; }
   .trust-item i { color: var(--teal); font-size: 18px; }
-  .store-row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .store-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: #000; color: #fff;
-    padding: 10px 18px; border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.3);
-    text-decoration: none;
-    line-height: 1;
-  }
-  .store-btn i { font-size: 28px; }
-  .store-btn .label { display: flex; flex-direction: column; gap: 2px; }
-  .store-btn .label small { font-size: 10px; opacity: .9; font-weight: 500; }
-  .store-btn .label strong { font-size: 16px; font-weight: 700; }
-  .hero-r { flex: 1; display: flex; justify-content: center; align-items: center; min-width: 0; }
-  .hero-phone-img { display: block; width: 100%; max-width: 560px; height: auto; }
+  .hero-r { flex: 1 1 380px; display: flex; justify-content: center; align-items: center; min-width: 0; }
+  .hero-phone { position: relative; width: 100%; max-width: 420px; }
+  .hero-phone-img { display: block; width: 100%; height: auto; }
 
   .floating-pill {
-    position: absolute;
+    position: absolute; z-index: 2;
     display: inline-flex; align-items: center; gap: 10px;
     background: var(--surface); color: var(--text);
     padding: 10px 18px; border-radius: 999px;
-    font-size: 16px; font-weight: 600;
+    font-size: 16px; font-weight: 600; white-space: nowrap;
     border: 1px solid rgba(255,255,255,.06);
-    box-shadow: 0 4px 12px rgba(11,27,36,.5);
+    box-shadow: 0 8px 24px rgba(11,27,36,.55);
   }
+  .hero-phone .fp-top { top: 6%; left: 50%; }
+  .hero-phone .fp-bot { bottom: 12%; right: 54%; }
+  .hero-phone .fp-top i { color: var(--purple); }
+  .hero-phone .fp-bot i { color: var(--orange); }
 
   /* Section header */
   .sec-head { display: flex; flex-direction: column; align-items: center; gap: 24px; max-width: 932px; margin: 0 auto; text-align: center; }
-  .sec-title { font-size: 48px; line-height: 1.05; margin: 0; }
-  .sec-sub { color: var(--muted); font-size: 22px; line-height: 1.45; font-weight: 500; margin: 0; }
+  .sec-title { font-size: clamp(1.75rem, 3.6vw, 3rem); line-height: 1.12; margin: 0; }
+  .sec-sub { color: var(--muted); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.5; font-weight: 500; margin: 0; }
 
   /* How it works */
   .hiw-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 80px; }
@@ -153,27 +186,19 @@
   .icon-circle.coral { color: var(--coral); }
   .icon-circle.purple { color: var(--purple); }
   .icon-circle.teal { color: var(--teal-soft); }
-  .card h3 { color: var(--text); font-family: "DM Sans"; font-size: 24px; font-weight: 600; line-height: 1.05; margin: 0; }
-  .card p { color: var(--muted); font-size: 18px; line-height: 1.5; font-weight: 500; margin: 0; }
+  .card h3 { color: var(--text); font-family: "DM Sans"; font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.2; margin: 0; }
+  .card p { color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.5; font-weight: 500; margin: 0; }
 
   /* Experiments */
   .exps-row { display: flex; gap: 80px; justify-content: center; align-items: center; margin-top: 64px; }
-  .exps-mock {
-    position: relative; width: 525px; height: 588px;
-    flex-shrink: 0;
-  }
+  .exps-mock { position: relative; width: 473px; max-width: 100%; flex-shrink: 0; }
   .exps-mock .img {
-    position: absolute; left: 26px; top: 0;
-    width: 473px; height: 588px;
-    background: linear-gradient(160deg, #1a3340, #0b1b24);
-    background-image: url("exp-phone.png");
-    background-size: cover; background-position: center;
-    border-radius: 28px;
+    display: block; width: 100%; height: auto; border-radius: 28px;
   }
   .exps-mock .floating-pill.coral i { color: var(--coral); }
-  .exps-mock .floating-pill.green i { color: var(--teal-bright); }
-  .exps-mock .fp-1 { top: 51px; left: 241px; }
-  .exps-mock .fp-2 { top: 483px; left: 37px; }
+  .exps-mock .floating-pill.green i { color: var(--green); }
+  .exps-mock .fp-1 { top: 8%; right: -6%; }
+  .exps-mock .fp-2 { bottom: 12%; left: -8%; }
   .exps-col { display: flex; flex-direction: column; gap: 40px; width: 637px; max-width: 100%; }
   .exp-card {
     background: var(--surface);
@@ -183,20 +208,22 @@
   }
   .exp-meta { color: var(--muted); font-size: 14px; font-weight: 600; }
   .exp-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .exp-title { font-family: "DM Serif Display"; font-size: 30px; line-height: 1.05; color: var(--text); }
+  .exp-title { font-family: "DM Serif Display"; font-size: clamp(1.375rem, 2.6vw, 1.875rem); line-height: 1.1; color: var(--text); }
   .badge {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 6px 12px; border-radius: 999px;
-    font-size: 12px; font-weight: 700; color: var(--bg);
+    font-size: 12px; font-weight: 700; letter-spacing: .5px; color: var(--bg);
+    white-space: nowrap;
   }
-  .badge.green { background: var(--teal-bright); }
+  .badge.green { background: var(--green); }
   .badge.orange { background: var(--orange); }
   .exp-stats { display: flex; align-items: center; gap: 14px; padding: 10px 0; }
-  .exp-stat { display: flex; flex-direction: column; gap: 2px; flex: 1; }
-  .exp-stat .k { color: var(--muted); font-size: 13px; font-weight: 500; }
-  .exp-stat .v { color: var(--text); font-family: "DM Serif Display"; font-size: 22px; line-height: 1; }
-  .exp-arrow { color: var(--text); font-size: 22px; }
-  .exp-note { color: var(--muted); font-size: 15px; line-height: 1.4; font-weight: 500; margin: 0; }
+  .exp-stat { display: flex; flex-direction: column; gap: 2px; }
+  .exp-stat .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
+  .exp-stat .v { font-family: "DM Serif Display"; font-size: 36px; line-height: 1; color: var(--text); }
+  .exp-stat.after .k, .exp-stat.after .v { color: var(--accent); }
+  .exp-arrow { color: var(--text); font-size: 24px; }
+  .exp-note { color: var(--muted); font-size: 15px; line-height: 1.45; font-weight: 500; margin: 0; }
 
   /* Comparison */
   .comp-tbl {
@@ -208,22 +235,17 @@
     max-width: 1169px; margin-left: auto; margin-right: auto;
   }
   .comp-side { padding: 40px; display: flex; flex-direction: column; gap: 28px; justify-content: center; }
-  .comp-side h4 { font-family: "DM Sans"; font-size: 24px; font-weight: 700; margin: 0; color: var(--text); }
-  .comp-side h4.brand-row { display: inline-flex; align-items: center; gap: 8px; }
+  .comp-side h3 { font-family: "DM Sans"; font-size: 24px; font-weight: 700; margin: 0; color: var(--text); }
+  .comp-side h3.brand-row { display: inline-flex; align-items: center; gap: 10px; }
   .comp-list { display: flex; flex-direction: column; gap: 16px; }
-  .comp-item { display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 500; }
-  .comp-item i { font-size: 22px; }
-  .comp-item.yes i { color: var(--teal); }
+  .comp-item { display: flex; align-items: flex-start; gap: 12px; font-size: 18px; font-weight: 500; line-height: 1.35; }
+  .comp-item i { font-size: 22px; flex-shrink: 0; }
+  .comp-item.yes i { color: var(--accent); }
   .comp-item.no i { color: var(--coral); }
-  .comp-div { background: var(--divider); width: 2px; height: 198px; align-self: center; }
+  .comp-div { background: var(--divider); width: 2px; align-self: center; height: 198px; }
 
   /* Pricing */
-  .pricing-row {
-    display: grid;
-    grid-template-columns: 411px 1fr 411px;
-    gap: 24px;
-    margin-top: 64px;
-  }
+  .pricing-row { display: grid; grid-template-columns: 411px 1fr 411px; gap: 24px; margin-top: 64px; align-items: stretch; }
   .price-card {
     background: var(--surface);
     border-radius: 32px;
@@ -232,15 +254,14 @@
   }
   .price-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .price-label { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: 2.5px; }
-  .price-tag {
-    display: inline-flex; align-items: baseline; gap: 8px;
-  }
-  .price-tag .amount { font-family: "DM Serif Display"; font-size: 72px; line-height: 1; color: var(--text); }
+  .price-tag { display: inline-flex; align-items: baseline; gap: 8px; }
+  .price-tag .amount { font-family: "DM Serif Display"; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; color: var(--text); }
   .price-tag .per { color: var(--muted); font-size: 18px; font-weight: 600; }
   .price-desc { color: var(--muted); font-size: 16px; line-height: 1.5; font-weight: 500; margin: 0; }
   .feature-list { display: flex; flex-direction: column; gap: 12px; }
   .feature { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; }
   .feature i { color: var(--muted); font-size: 18px; }
+  .price-card .grow { flex: 1; }
   .pill-tag {
     display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 999px;
     font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--bg);
@@ -257,11 +278,11 @@
     display: flex; flex-direction: column; gap: 20px;
   }
   .stars { display: inline-flex; gap: 4px; color: var(--orange); font-size: 20px; }
-  .t-quote { color: var(--text); font-size: 20px; line-height: 1.5; font-weight: 500; margin: 0; }
+  .t-quote { color: var(--text); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.5; font-weight: 500; margin: 0; }
   .t-spacer { flex: 1; }
   .t-author { display: flex; align-items: center; gap: 12px; }
   .avatar {
-    width: 48px; height: 48px; border-radius: 24px;
+    width: 48px; height: 48px; border-radius: 24px; flex-shrink: 0;
     display: inline-flex; align-items: center; justify-content: center;
     color: var(--text); font-family: "DM Serif Display"; font-size: 22px;
   }
@@ -271,22 +292,41 @@
   .t-name { color: var(--text); font-size: 18px; font-weight: 700; }
   .t-role { color: var(--muted); font-size: 14px; font-weight: 500; }
 
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 16px; max-width: 880px; margin: 48px auto 0; }
+  .faq-item { background: var(--surface); border-radius: 24px; }
+  .faq-item summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 26px 32px;
+    font-size: clamp(1.0625rem, 2vw, 1.375rem); font-weight: 700; color: var(--text);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary i { color: var(--muted); font-size: 24px; transition: transform .2s ease; flex-shrink: 0; }
+  .faq-item[open] summary i { transform: rotate(180deg); }
+  .faq-item .faq-answer {
+    padding: 0 32px 28px;
+    color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.125rem); font-weight: 500; line-height: 1.55; margin: 0;
+  }
+
   /* Final CTA */
   .section.final-cta {
     background:
-      radial-gradient(ellipse 100% 140% at center top, #3ef0dc45 0%, #0b1b2400 100%),
+      radial-gradient(ellipse 30% 80% at center top, #3ef0dc45 0%, #0b1b2400 100%),
+      linear-gradient(rgba(11, 27, 36, .9), rgba(11, 27, 36, .9)),
+      url("img_bg_splash.png") center / cover no-repeat,
       var(--bg);
     display: flex; flex-direction: column; align-items: center; gap: 36px;
   }
-  .fc-title { font-family: "DM Serif Display"; font-size: 56px; line-height: 1; max-width: 1100px; text-align: center; margin: 0; color: var(--text); }
-  .fc-sub { color: var(--muted); font-size: 24px; line-height: 1.4; font-weight: 500; max-width: 780px; text-align: center; margin: 0; }
+  .fc-title { font-family: "DM Serif Display"; font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.08; max-width: 1100px; text-align: center; margin: 0; color: var(--text); }
+  .fc-sub { color: var(--muted); font-size: clamp(1.125rem, 1.8vw, 1.5rem); line-height: 1.45; font-weight: 500; max-width: 780px; text-align: center; margin: 0; }
   .fc-form {
     display: flex; align-items: center; gap: 12px;
     background: var(--surface); border-radius: 999px;
     padding: 10px 10px 10px 32px; width: 580px; max-width: 100%;
   }
   .fc-form input {
-    flex: 1; background: transparent; border: 0; outline: none;
+    flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
     color: var(--text); font-family: inherit; font-size: 20px; font-weight: 500;
   }
   .fc-form input::placeholder { color: var(--muted); }
@@ -295,52 +335,81 @@
 
   /* Footer */
   .footer-head { display: grid; grid-template-columns: 380px 1fr 1fr 1fr; gap: 48px; }
+  .footer-brand { display: flex; flex-direction: column; gap: 16px; }
   .footer-brand p { color: var(--muted); font-size: 16px; line-height: 1.5; font-weight: 500; margin: 0; }
-  .social-row { display: flex; gap: 12px; margin-top: 8px; }
+  .social-row { display: flex; gap: 12px; }
   .social {
     width: 40px; height: 40px; border-radius: 20px;
     background: var(--surface);
     display: inline-flex; align-items: center; justify-content: center;
     color: var(--muted); text-decoration: none;
+    transition: color .15s ease, background .15s ease;
   }
-  .footer-col h5 { color: var(--text); font-size: 14px; letter-spacing: 2px; font-weight: 700; margin: 0 0 14px; text-transform: uppercase; }
+  .social:hover { color: var(--text); background: var(--surface-2); }
+  .footer-col h4 { color: var(--text); font-size: 14px; letter-spacing: 2px; font-weight: 700; margin: 0 0 14px; text-transform: uppercase; }
   .footer-col a { display: block; color: var(--muted); font-size: 16px; font-weight: 500; text-decoration: none; padding: 7px 0; }
+  .footer-col a:hover { color: var(--text); }
   .footer-bot {
     display: flex; align-items: center; justify-content: space-between; gap: 24px;
     padding-top: 24px; margin-top: 12px;
-    border-top: 1px solid rgba(255,255,255,.05);
+    border-top: 1px solid rgba(255,255,255,.08);
     color: var(--muted); font-size: 14px; font-weight: 500;
   }
 
   @media (max-width: 1080px) {
-    .hero-body { flex-direction: column; align-items: flex-start; }
-    .hero-l { max-width: 100%; }
-    .hero-title { font-size: 48px; }
-    .hero-phone-img { max-width: 420px; }
-    .sec-title { font-size: 36px; }
+    .hero-body { flex-direction: column; align-items: stretch; }
+    .hero-l { max-width: 100%; width: 100%; }
+    .hero-r { width: 100%; }
     .hiw-row { grid-template-columns: 1fr; }
-    .exps-row { flex-direction: column; gap: 40px; }
-    .exps-mock { width: 100%; max-width: 473px; }
+    .exps-row { flex-direction: column; gap: 56px; }
+    .exps-col { width: 100%; }
     .comp-tbl { grid-template-columns: 1fr; }
     .comp-div { display: none; }
     .pricing-row { grid-template-columns: 1fr; }
     .t-row { grid-template-columns: 1fr; }
     .footer-head { grid-template-columns: 1fr 1fr; }
-    .section { padding: 80px 32px; }
-    .section.hero { padding: 0 32px 60px; }
+    /* Uniform 32px horizontal padding for all content on mobile.
+       --gutter is repeated on hero/cta/footer to beat their 0,2,0 base rules. */
+    .section { --gutter: 32px; padding-block: 80px; }
+    .section.hero { --gutter: 32px; padding-block: 0 60px; }
     .section.comparison,
     .section.testimonials,
-    .section.final-cta { padding: 80px 32px; }
-    .section.footer { padding: 60px 32px 40px; }
-    .fc-title { font-size: 40px; }
+    .section.faq,
+    .section.final-cta { --gutter: 32px; padding-block: 80px; }
+    .section.footer { --gutter: 32px; padding-block: 60px 40px; }
+  }
+  @media (max-width: 760px) {
+    .nav-center { display: none; }
+  }
+  @media (max-width: 560px) {
+    /* Stack the inline waitlist forms so they never crowd on small phones */
+    .email-form, .fc-form {
+      flex-direction: column; align-items: stretch;
+      border-radius: 20px; padding: 16px; gap: 12px;
+    }
+    .email-form input, .fc-form input { padding: 4px 8px; font-size: 16px; }
+    .email-form .btn, .fc-form .btn { width: 100%; }
   }
   @media (max-width: 640px) {
     .nav-right .nav-link { display: none; }
-    .hero-title { font-size: 40px; }
-    .sec-title { font-size: 28px; }
-    .fc-title { font-size: 32px; }
+    .nav { padding: 28px 0; }
+    .brand-name { font-size: 26px; }
+    .btn { font-size: 16px; padding: 12px 20px; }
+    .hiw-row { margin-top: 40px; gap: 16px; }
+    .card { padding: 28px; gap: 16px; }
+    .faq-item summary { padding: 22px 24px; }
+    .faq-item .faq-answer { padding: 0 24px 24px; }
     .footer-head { grid-template-columns: 1fr; }
     .footer-bot { flex-direction: column; align-items: flex-start; }
+    .floating-pill { font-size: 13px; padding: 8px 14px; }
+    .hero-phone .fp-top { left: 0; }
+    .hero-phone .fp-bot { right: 0; }
+    .exps-mock .fp-1 { right: 0; }
+    .exps-mock .fp-2 { left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
   }
 </style>
 </head>
@@ -350,26 +419,32 @@
   <!-- HERO -->
   <section class="section hero grad-a">
     <nav class="nav">
-      <div class="brand">
-        <span class="logo">S</span>
+      <a class="brand" href="#" aria-label="SleepQ home">
+        <img class="logo" src="icon.png" alt="SleepQ" width="48" height="48" />
         <span class="brand-name">SleepQ</span>
+      </a>
+      <div class="nav-center">
+        <a class="nav-link" href="#how">How it works</a>
+        <a class="nav-link" href="#experiments">Lab</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
       </div>
       <div class="nav-right">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="#waitlist">Login</a>
         <a class="btn" href="#waitlist">Join waitlist</a>
       </div>
     </nav>
 
     <div class="hero-body">
       <div class="hero-l">
-        <span class="pill" style="background:#0b1b24;">
+        <span class="chip">
           <i class="ph-fill ph-check-circle" style="color: var(--teal);"></i>
           5,127 people already on the waitlist
         </span>
         <h1 class="serif hero-title">Your sleep, finally actionable.</h1>
         <p class="hero-sub">SleepQ is your AI sleep coach. It runs personalized experiments on your nights, then tells you exactly what's moving your numbers.</p>
         <form class="email-form" action="https://formspree.io/f/meedozlj" method="POST">
-          <input type="email" name="email" placeholder="your@email.com" required />
+          <label class="visually-hidden" for="hero-email">Email address</label>
+          <input id="hero-email" type="email" name="email" placeholder="your@email.com" required />
           <input type="hidden" name="_subject" value="New SleepQ waitlist signup (hero)" />
           <button class="btn" type="submit">Join waitlist</button>
         </form>
@@ -378,24 +453,34 @@
           <span class="trust-item"><i class="ph-fill ph-check-circle"></i> Free month of Premium at launch</span>
         </div>
         <div class="store-row">
-          <!-- Pre-launch: scrolls to waitlist. Swap href to App Store URL after launch. -->
+          <!-- Pre-launch: scrolls to waitlist. Swap href to store URLs after launch. -->
           <a class="store-btn" href="#waitlist" aria-label="Download on the App Store">
             <i class="ph-fill ph-apple-logo"></i>
-            <span class="label">
-              <small>Download on the</small>
-              <strong>App Store</strong>
-            </span>
+            <span class="label"><small>Download on the</small><strong>App Store</strong></span>
           </a>
+          <!-- Android is post-MVP; restore the Play Store button when the app ships:
+          <a class="store-btn" href="#waitlist" aria-label="Get it on Google Play">
+            <i class="ph-fill ph-google-play-logo"></i>
+            <span class="label"><small>Get it on</small><strong>Play Store</strong></span>
+          </a> -->
         </div>
       </div>
       <div class="hero-r">
-        <img src="hero-phone.png" alt="SleepQ app on iPhone" class="hero-phone-img" />
+        <div class="hero-phone">
+          <span class="floating-pill fp-top">
+            <i class="ph-fill ph-device-mobile"></i> Dim screen by 10 PM
+          </span>
+          <img src="hero-phone.png" alt="SleepQ app on iPhone showing tonight's experiment" class="hero-phone-img" width="358" height="656" />
+          <span class="floating-pill fp-bot">
+            <i class="ph-fill ph-coffee"></i> No caffeine after 2 PM
+          </span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section how grad-b">
+  <section class="section how grad-b" id="how">
     <div class="sec-head">
       <span class="eyebrow" style="color: var(--teal-soft);">How it works</span>
       <h2 class="serif sec-title">Most sleep apps tell you what's wrong. SleepQ tells you what to change tonight.</h2>
@@ -405,7 +490,7 @@
       <div class="card">
         <i class="ph-fill ph-heartbeat icon-circle coral"></i>
         <h3>Connect your sleep data</h3>
-        <p>Sync Apple Health, Oura or Whoop in 30 seconds. Your nights load automatically — no manual journaling, no checklists.</p>
+        <p>Sync Apple Health in 30 seconds. Your nights load automatically — no manual journaling, no checklists.</p>
       </div>
       <div class="card">
         <i class="ph-fill ph-flask icon-circle purple"></i>
@@ -421,7 +506,7 @@
   </section>
 
   <!-- EXPERIMENTS -->
-  <section class="section experiments grad-a">
+  <section class="section experiments grad-a" id="experiments">
     <div class="sec-head">
       <span class="eyebrow">Real results</span>
       <h2 class="serif sec-title">Beta users found their lever — and slept like it.</h2>
@@ -429,11 +514,11 @@
     </div>
 
     <div class="exps-row">
-      <div class="exps-mock" aria-hidden="true">
-        <div class="img"></div>
+      <div class="exps-mock">
         <span class="floating-pill coral fp-1">
           <i class="ph-fill ph-thumbs-down"></i> Late workouts didn't help.
         </span>
+        <img class="img" src="exp-phone.png" alt="SleepQ experiment results screen" width="473" height="588" loading="lazy" />
         <span class="floating-pill green fp-2">
           <i class="ph-fill ph-thumbs-up"></i> Deep sleep increased by 12 min
         </span>
@@ -444,12 +529,12 @@
           <span class="exp-meta">7 nights</span>
           <div class="exp-row">
             <span class="exp-title">Screens off by 10:30 PM</span>
-            <span class="badge green"><i class="ph-fill ph-thumbs-up"></i> Worked</span>
+            <span class="badge green"><i class="ph-fill ph-check"></i> Worked</span>
           </div>
           <div class="exp-stats">
-            <div class="exp-stat"><span class="k">Time to fall asleep</span><span class="v">32 min</span></div>
+            <div class="exp-stat"><span class="k">Before</span><span class="v">32 min</span></div>
             <i class="ph ph-arrow-right exp-arrow"></i>
-            <div class="exp-stat"><span class="k">After 7 nights</span><span class="v">14 min</span></div>
+            <div class="exp-stat after"><span class="k">After</span><span class="v">14 min</span></div>
           </div>
           <p class="exp-note">Time to fall asleep cut from 32 to 14 minutes. The biggest unlock for screen-heavy nights.</p>
         </div>
@@ -458,12 +543,12 @@
           <span class="exp-meta">7 nights</span>
           <div class="exp-row">
             <span class="exp-title">No caffeine after 1 PM</span>
-            <span class="badge orange"><i class="ph-fill ph-minus-circle"></i> No change</span>
+            <span class="badge orange"><i class="ph-fill ph-minus"></i> Neutral</span>
           </div>
           <div class="exp-stats">
-            <div class="exp-stat"><span class="k">Sleep score</span><span class="v">72</span></div>
+            <div class="exp-stat"><span class="k">Before</span><span class="v">82</span></div>
             <i class="ph ph-arrow-right exp-arrow"></i>
-            <div class="exp-stat"><span class="k">After 7 nights</span><span class="v">73</span></div>
+            <div class="exp-stat after"><span class="k">After</span><span class="v">83</span></div>
           </div>
           <p class="exp-note">Sleep score barely moved. Honest answer: not your lever — try another experiment.</p>
         </div>
@@ -474,34 +559,34 @@
   <!-- COMPARISON -->
   <section class="section comparison grad-b">
     <div class="sec-head">
-      <span class="eyebrow">Why sleepq</span>
-      <h2 class="serif sec-title">Trackers tell you what happened. SleepQ tells you what to change.</h2>
+      <span class="eyebrow">Why SleepQ</span>
+      <h2 class="serif sec-title">Trackers tell you what happened. SleepQ tells you the why and how to improve.</h2>
     </div>
     <div class="comp-tbl">
       <div class="comp-side">
-        <h4 class="brand-row"><span class="logo" style="width:32px;height:32px;font-size:18px;">S</span> <span class="serif" style="font-size:24px;letter-spacing:1px;">SleepQ</span></h4>
+        <h3 class="brand-row"><img class="logo" src="icon.png" alt="" width="32" height="32" style="width:32px;height:32px;border-radius:6px;" /> <span class="serif" style="font-size:24px;letter-spacing:1px;">SleepQ</span></h3>
         <div class="comp-list">
           <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> AI coach trained on your nights, not population averages</div>
-          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> 9 personalized 7-night experiments with real proof</div>
+          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Personalized experiments with real proof</div>
           <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Plain-language insights — warm, never shaming</div>
-          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Auto-pulls from Apple Health, Oura &amp; Whoop</div>
+          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Auto-pulls from Apple Health</div>
         </div>
       </div>
       <div class="comp-div"></div>
       <div class="comp-side">
-        <h4>Other sleep apps</h4>
+        <h3>Other sleep apps</h3>
         <div class="comp-list">
           <div class="comp-item no"><i class="ph-fill ph-x-circle"></i> Generic tips that ignore your data</div>
           <div class="comp-item no"><i class="ph-fill ph-x-circle"></i> Pretty charts, no clear next move</div>
           <div class="comp-item no"><i class="ph-fill ph-x-circle"></i> Anxiety-spiking scores with no context</div>
-          <div class="comp-item no"><i class="ph-fill ph-x-circle"></i> Manual logging you'll abandon by week 2</div>
+          <div class="comp-item no"><i class="ph-fill ph-x-circle"></i> Manual logging you'll abandon by Week 2</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section class="section pricing grad-a">
+  <section class="section pricing grad-a" id="pricing">
     <div class="sec-head">
       <span class="eyebrow">Pricing</span>
       <h2 class="serif sec-title">Free forever. Premium for the parts that change your nights.</h2>
@@ -518,8 +603,8 @@
           <div class="feature"><i class="ph ph-check"></i> Apple Health sync</div>
           <div class="feature"><i class="ph ph-check"></i> Weekly recap</div>
         </div>
-        <div style="flex:1"></div>
-        <button class="btn btn-ghost">Get the app</button>
+        <div class="grow"></div>
+        <a class="btn btn-ghost" href="#waitlist">Get the app</a>
       </div>
 
       <div class="price-card">
@@ -527,15 +612,16 @@
           <span class="price-label">PREMIUM</span>
           <span class="pill-tag orange">MOST POPULAR</span>
         </div>
-        <div class="price-tag"><span class="amount">$3.99</span><span class="per">per month</span></div>
-        <p class="price-desc">The full coach: chat, voice, all 9 experiments, and your detailed progress reports.</p>
+        <div class="price-tag"><span class="amount">$4.99</span><span class="per">per month</span></div>
+        <p class="price-desc">The full coach: chat, voice, all experiments, and your detailed progress reports.</p>
         <div class="feature-list">
           <div class="feature"><i class="ph ph-check"></i> Everything in Free</div>
           <div class="feature"><i class="ph ph-check"></i> AI sleep coach (chat + voice)</div>
-          <div class="feature"><i class="ph ph-check"></i> All 9 personalized 7-night experiments</div>
+          <div class="feature"><i class="ph ph-check"></i> All personalized experiments</div>
           <div class="feature"><i class="ph ph-check"></i> Daily insights &amp; detailed reports</div>
         </div>
-        <button class="btn">Start 7-day free trial</button>
+        <div class="grow"></div>
+        <a class="btn" href="#waitlist">Start 7-day free trial</a>
       </div>
 
       <div class="price-card">
@@ -543,15 +629,16 @@
           <span class="price-label">PREMIUM</span>
           <span class="pill-tag purple">SAVE 17%</span>
         </div>
-        <div class="price-tag"><span class="amount">$39.99</span><span class="per">per year</span></div>
-        <p class="price-desc">Same Premium features, billed once. Save $8 a year vs paying monthly.</p>
+        <div class="price-tag"><span class="amount">$49.99</span><span class="per">per year</span></div>
+        <p class="price-desc">Same Premium features, billed once. Save $10 a year vs paying monthly.</p>
         <div class="feature-list">
           <div class="feature"><i class="ph ph-check"></i> Everything in Monthly</div>
-          <div class="feature"><i class="ph ph-check"></i> Save $8 vs paying monthly</div>
+          <div class="feature"><i class="ph ph-check"></i> Save $10 vs paying monthly</div>
           <div class="feature"><i class="ph ph-check"></i> Annual sleep year-in-review</div>
           <div class="feature"><i class="ph ph-check"></i> Priority support</div>
         </div>
-        <button class="btn">Start 7-day free trial</button>
+        <div class="grow"></div>
+        <a class="btn" href="#waitlist">Start 7-day free trial</a>
       </div>
     </div>
   </section>
@@ -564,7 +651,7 @@
     </div>
     <div class="t-row">
       <div class="t-card">
-        <div class="stars">
+        <div class="stars" aria-label="5 out of 5 stars">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
         <p class="t-quote">"Cut my time-to-fall-asleep from 35 minutes to 12. The 'screens off by 10:30' experiment was the unlock I never would've tried on my own."</p>
@@ -579,7 +666,7 @@
       </div>
 
       <div class="t-card">
-        <div class="stars">
+        <div class="stars" aria-label="5 out of 5 stars">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
         <p class="t-quote">"Coach found a caffeine pattern I'd missed for two years. Real numbers, real changes — finally."</p>
@@ -594,7 +681,7 @@
       </div>
 
       <div class="t-card">
-        <div class="stars">
+        <div class="stars" aria-label="5 out of 5 stars">
           <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
         </div>
         <p class="t-quote">"The first sleep app that doesn't make me MORE anxious about sleep. Calm, specific, actually useful."</p>
@@ -610,6 +697,36 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section faq grad-a">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="serif sec-title">Everything you'd ask before joining the waitlist.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Do I need a wearable to use SleepQ? <i class="ph ph-caret-down"></i></summary>
+        <p class="faq-answer">No. SleepQ works with just your iPhone via Apple Health, and gets sharper if you add an Oura ring, Whoop or Apple Watch. Bring what you have — we'll work with it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sleep data private? <i class="ph ph-caret-down"></i></summary>
+        <p class="faq-answer">Yes. Your sleep data is yours. It's encrypted in transit and at rest, we never sell it, and you can export or delete everything from the app at any time.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from Oura or Whoop? <i class="ph ph-caret-down"></i></summary>
+        <p class="faq-answer">Those track and score your sleep. SleepQ reads that data — including from Oura and Whoop — and turns it into specific, personalized experiments and plain-language coaching. It's the "what to change tonight" those trackers leave out.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will it help me if I have insomnia or wake up at 3 AM? <i class="ph ph-caret-down"></i></summary>
+        <p class="faq-answer">SleepQ isn't a medical treatment, but its experiments target the everyday levers — light, caffeine, screens, wind-down — that often drive restless nights and early waking. If you have diagnosed insomnia, use it alongside your clinician's guidance.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I cancel anytime? <i class="ph ph-caret-down"></i></summary>
+        <p class="faq-answer">Yes. Premium is billed monthly or yearly and you can cancel in two taps from Settings — no emails, no hoops. The Free tier stays free forever, no card required.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- FINAL CTA -->
   <section class="section final-cta" id="waitlist">
     <span class="pill">
@@ -619,9 +736,10 @@
     <h2 class="fc-title">Stop guessing. Sleep better in 7 nights.</h2>
     <p class="fc-sub">Join the waitlist and get a free first month of Premium when SleepQ launches.</p>
     <form class="fc-form" action="https://formspree.io/f/meedozlj" method="POST">
-      <input type="email" name="email" placeholder="your@email.com" required />
+      <label class="visually-hidden" for="cta-email">Email address</label>
+      <input id="cta-email" type="email" name="email" placeholder="your@email.com" required />
       <input type="hidden" name="_subject" value="New SleepQ waitlist signup (footer)" />
-      <button class="btn" type="submit">Join waitlist <i class="ph ph-arrow-right"></i></button>
+      <button class="btn" type="submit">Join waitlist</button>
     </form>
     <div class="fc-trust">
       <span class="trust-item"><i class="ph-fill ph-shield-check"></i> Privacy first · No data sold</span>
@@ -631,36 +749,47 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="section footer grad-a">
+  <footer class="section footer grad-b">
     <div class="footer-head">
-      <div class="footer-brand col" style="gap:16px;">
-        <div class="brand">
-          <span class="logo">S</span>
+      <div class="footer-brand">
+        <a class="brand" href="#" aria-label="SleepQ home">
+          <img class="logo" src="icon.png" alt="SleepQ" width="48" height="48" />
           <span class="brand-name" style="font-size:26px;">SleepQ</span>
-        </div>
+        </a>
         <p>Your AI sleep coach. Personalized experiments, real numbers, deeper nights.</p>
         <div class="social-row">
+          <a class="social" href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
           <a class="social" href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-          <a class="social" href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          <a href="https://www.linkedin.com/company/sleepq" target="_blank" class="social" href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+        </div>
+        <div class="store-row">
+          <a class="store-btn" href="#waitlist" aria-label="Download on the App Store">
+            <i class="ph-fill ph-apple-logo"></i>
+            <span class="label"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <!-- Android is post-MVP; restore the Play Store button when the app ships:
+          <a class="store-btn" href="#waitlist" aria-label="Get it on Google Play">
+            <i class="ph-fill ph-google-play-logo"></i>
+            <span class="label"><small>Get it on</small><strong>Play Store</strong></span>
+          </a> -->
         </div>
       </div>
       <div class="footer-col">
-        <h5>Product</h5>
-        <a href="#">How it works</a>
-        <a href="#">Experiments</a>
-        <a href="#">Pricing</a>
-        <a href="#">Science</a>
+        <h4>Product</h4>
+        <a href="#how">How it works</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">Science</a>
       </div>
       <div class="footer-col">
-        <h5>Company</h5>
+        <h4>Company</h4>
         <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="support.html" target="_blank">Contact</a>
       </div>
       <div class="footer-col">
-        <h5>Legal</h5>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="support.html">Support</a>
+        <h4>Legal</h4>
+        <a href="privacy.html" target="_blank">Privacy & Cookies </a>
+        <a href="terms.html" target="_blank">Terms</a>
       </div>
     </div>
     <div class="footer-bot">
