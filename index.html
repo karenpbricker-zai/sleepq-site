@@ -148,6 +148,19 @@
     color: var(--text); font-family: inherit; font-size: 18px; font-weight: 500;
   }
   .email-form input::placeholder { color: var(--muted); }
+
+  /* Inline success state shown after an email signup (replaces the form) */
+  .form-success {
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start;
+    background: var(--surface); color: var(--text);
+    border: 1px solid rgba(190, 226, 224, .18);
+    border-radius: 999px; padding: 14px 24px;
+    font-size: 17px; font-weight: 600; line-height: 1.3;
+    max-width: 100%;
+  }
+  .form-success i { color: var(--teal-soft); font-size: 22px; flex-shrink: 0; }
+  .final-cta .form-success { align-self: center; }
   .trust-row { display: flex; gap: 24px; flex-wrap: wrap; }
   .trust-item { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 500; }
   .trust-item i { color: var(--teal); font-size: 18px; }
@@ -430,7 +443,7 @@
       </div>
       <div class="nav-right">
         <a class="nav-link" href="#waitlist">Login</a>
-        <a class="btn" href="#waitlist">Join waitlist</a>
+        <a class="btn" href="#waitlist">Get early access</a>
       </div>
     </nav>
 
@@ -438,15 +451,15 @@
       <div class="hero-l">
         <span class="chip">
           <i class="ph-fill ph-check-circle" style="color: var(--teal);"></i>
-          5,127 people already on the waitlist
+          Private beta open. Spots limited.
         </span>
         <h1 class="serif hero-title">Your sleep, finally actionable.</h1>
         <p class="hero-sub">SleepQ is your AI sleep coach. It runs personalized experiments on your nights, then tells you exactly what's moving your numbers.</p>
         <form class="email-form" action="https://formspree.io/f/meedozlj" method="POST">
           <label class="visually-hidden" for="hero-email">Email address</label>
           <input id="hero-email" type="email" name="email" placeholder="your@email.com" required />
-          <input type="hidden" name="_subject" value="New SleepQ waitlist signup (hero)" />
-          <button class="btn" type="submit">Join waitlist</button>
+          <input type="hidden" name="_subject" value="New SleepQ early-access signup (hero)" />
+          <button class="btn" type="submit">Get early access</button>
         </form>
         <div class="trust-row">
           <span class="trust-item"><i class="ph-fill ph-check-circle"></i> Free forever · No credit card</span>
@@ -590,7 +603,7 @@
     <div class="sec-head">
       <span class="eyebrow">Pricing</span>
       <h2 class="serif sec-title">Free forever. Premium for the parts that change your nights.</h2>
-      <p class="sec-sub">7-day Premium trial. Cancel anytime. Waitlist gets a free first month at launch.</p>
+      <p class="sec-sub">7-day Premium trial. Cancel anytime. Early-access members get a free first month at launch.</p>
     </div>
 
     <div class="pricing-row">
@@ -701,7 +714,7 @@
   <section class="section faq grad-a">
     <div class="sec-head">
       <span class="eyebrow">FAQ</span>
-      <h2 class="serif sec-title">Everything you'd ask before joining the waitlist.</h2>
+      <h2 class="serif sec-title">Everything you'd ask before getting early access.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
@@ -731,15 +744,15 @@
   <section class="section final-cta" id="waitlist">
     <span class="pill">
       <i class="ph-fill ph-clock" style="color: var(--muted);"></i>
-      Limited beta · 5,127 already on the waitlist
+      Private beta · Spots are limited.
     </span>
     <h2 class="fc-title">Stop guessing. Sleep better in 7 nights.</h2>
-    <p class="fc-sub">Join the waitlist and get a free first month of Premium when SleepQ launches.</p>
+    <p class="fc-sub">Get early access and a free first month of Premium when SleepQ launches.</p>
     <form class="fc-form" action="https://formspree.io/f/meedozlj" method="POST">
       <label class="visually-hidden" for="cta-email">Email address</label>
       <input id="cta-email" type="email" name="email" placeholder="your@email.com" required />
-      <input type="hidden" name="_subject" value="New SleepQ waitlist signup (footer)" />
-      <button class="btn" type="submit">Join waitlist</button>
+      <input type="hidden" name="_subject" value="New SleepQ early-access signup (footer)" />
+      <button class="btn" type="submit">Get early access</button>
     </form>
     <div class="fc-trust">
       <span class="trust-item"><i class="ph-fill ph-shield-check"></i> Privacy first · No data sold</span>
@@ -758,9 +771,10 @@
         </a>
         <p>Your AI sleep coach. Personalized experiments, real numbers, deeper nights.</p>
         <div class="social-row">
-          <a class="social" href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
-          <a class="social" href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-          <a href="https://www.linkedin.com/company/sleepq" target="_blank" class="social" href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          <a class="social" href="https://x.com/sleepqapp" target="_blank" rel="noopener" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+          <a class="social" href="https://www.instagram.com/sleepqapp/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+          <a class="social" href="https://www.linkedin.com/company/sleepq" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          <a class="social" href="https://www.tiktok.com/@sleepqapp" target="_blank" rel="noopener" aria-label="TikTok"><i class="ph-fill ph-tiktok-logo"></i></a>
         </div>
         <div class="store-row">
           <a class="store-btn" href="#waitlist" aria-label="Download on the App Store">
@@ -799,5 +813,33 @@
   </footer>
 
 </div>
+
+<script>
+  // Submit waitlist forms via AJAX so people stay on the page and see an inline confirmation.
+  document.querySelectorAll('form[action*="formspree"]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Request failed');
+        var ok = document.createElement('div');
+        ok.className = 'form-success';
+        ok.setAttribute('role', 'status');
+        ok.innerHTML = '<i class="ph-fill ph-check-circle"></i> You’re in! We’ll email you the moment early access opens.';
+        form.replaceWith(ok);
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.innerHTML = original; }
+        alert('Something went wrong. Please try again, or email support@sleepq.app.');
+      });
+    });
+  });
+</script>
 </body>
 </html>
