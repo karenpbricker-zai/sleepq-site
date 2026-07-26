@@ -173,6 +173,9 @@
   .sec-sub { color: var(--muted); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.5; font-weight: 500; margin: 0; }
   .sec-sub a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
   .sec-sub a:hover { color: var(--text); }
+  /* Wide enough to overflow the 932px sec-head; keep it on one line until it can't fit the viewport */
+  .feedback-note { white-space: nowrap; }
+  @media (max-width: 1160px) { .feedback-note { white-space: normal; } }
 
   /* How it works */
   .hiw-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 80px; }
@@ -562,7 +565,8 @@
     <div class="sec-head">
       <span class="eyebrow">Pricing</span>
       <h2 class="serif sec-title">Free forever. Premium for the parts that change your nights.</h2>
-      <p class="sec-sub">7-day Premium trial. Cancel anytime. We'd love your feedback to help improve SleepQ. <a href="mailto:support@sleepq.app?subject=SleepQ%20feedback">Send us your thoughts</a> and receive one month of Premium as a thank you.</p>
+      <p class="sec-sub">7-day Premium trial. Cancel anytime.</p>
+      <p class="sec-sub feedback-note">We'd love your feedback to help improve SleepQ. <a href="mailto:support@sleepq.app?subject=SleepQ%20feedback">Send us your thoughts</a> and receive one month of Premium as a thank you.</p>
     </div>
 
     <div class="pricing-row">
