@@ -171,11 +171,13 @@
   .sec-head { display: flex; flex-direction: column; align-items: center; gap: 24px; max-width: 932px; margin: 0 auto; text-align: center; }
   .sec-title { font-size: clamp(1.75rem, 3.6vw, 3rem); line-height: 1.12; margin: 0; }
   .sec-sub { color: var(--muted); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.5; font-weight: 500; margin: 0; }
-  .sec-sub a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
-  .sec-sub a:hover { color: var(--text); }
+  .sec-sub a, .hero-note a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+  .sec-sub a:hover, .hero-note a:hover { color: var(--text); }
+  .hero-note { color: var(--muted); font-size: 15px; font-weight: 500; line-height: 1.5; margin: -16px 0 0; }
   /* Wide enough to overflow the 932px sec-head; keep it on one line until it can't fit the viewport */
   .feedback-note { white-space: nowrap; }
   @media (max-width: 1160px) { .feedback-note { white-space: normal; } }
+  .results-note { color: var(--muted); font-size: 14px; font-weight: 500; text-align: center; margin: 40px 0 0; opacity: .8; }
 
   /* How it works */
   .hiw-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 80px; }
@@ -422,6 +424,7 @@
           <i class="ph-fill ph-check-circle" style="color: var(--teal);"></i>
           Download on the App Store. Get better sleep today.
         </span>
+        <p class="hero-note"><a href="mailto:support@sleepq.app?subject=SleepQ%20feedback">Share thoughtful feedback</a> about your SleepQ experience and receive one complimentary month of Premium. Limited to one reward per user.</p>
         <h1 class="serif hero-title">Your sleep, finally actionable.</h1>
         <p class="hero-sub">SleepQ is your AI sleep coach. It runs personalized experiments on your nights, then tells you exactly what's moving your numbers.</p>
         <div class="trust-row">
@@ -484,7 +487,7 @@
   <section class="section experiments grad-a" id="experiments">
     <div class="sec-head">
       <span class="eyebrow">Real results</span>
-      <h2 class="serif sec-title">Beta users found their lever — and slept like it.</h2>
+      <h2 class="serif sec-title">Early users found their lever — and slept like it.</h2>
       <p class="sec-sub">Three of the 9 experiments your coach can run, and exactly what they did to real nights.</p>
     </div>
 
@@ -529,6 +532,7 @@
         </div>
       </div>
     </div>
+    <p class="results-note">Results shown are examples from early users. Individual results may vary.</p>
   </section>
 
   <!-- COMPARISON -->
@@ -541,7 +545,7 @@
       <div class="comp-side">
         <h3 class="brand-row"><img class="logo" src="icon.png" alt="" width="32" height="32" style="width:32px;height:32px;border-radius:6px;" /> <span class="serif" style="font-size:24px;letter-spacing:1px;">SleepQ</span></h3>
         <div class="comp-list">
-          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> AI coach trained on your nights, not population averages</div>
+          <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> AI coaching personalized to your sleep patterns</div>
           <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Personalized experiments with real proof</div>
           <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Plain-language insights — warm, never shaming</div>
           <div class="comp-item yes"><i class="ph-fill ph-check-circle"></i> Auto-pulls from Apple Health</div>
@@ -622,8 +626,8 @@
   <!-- TESTIMONIALS -->
   <section class="section testimonials grad-b">
     <div class="sec-head">
-      <span class="eyebrow">From the beta</span>
-      <h2 class="serif sec-title">Beta users say it's the first sleep app they actually keep using.</h2>
+      <span class="eyebrow">From early SleepQ users</span>
+      <h2 class="serif sec-title">Early users say it's the first sleep app they actually keep using.</h2>
     </div>
     <div class="t-row">
       <div class="t-card">
@@ -636,7 +640,7 @@
           <span class="avatar m">M</span>
           <div>
             <div class="t-name">Maya R.</div>
-            <div class="t-role">Product designer · Beta tester</div>
+            <div class="t-role">Product designer · Early user</div>
           </div>
         </div>
       </div>
@@ -671,6 +675,7 @@
         </div>
       </div>
     </div>
+    <p class="results-note">Testimonials are from early users. Individual results may vary.</p>
   </section>
 
   <!-- FAQ -->
