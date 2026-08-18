@@ -39,7 +39,7 @@
         <div class="page-wrapper">
         <section class="page-header">
             <h1>Privacy Policy</h1>
-            <p>Last Updated: May 21, 2026</p>
+            <p>Last Updated: August 18, 2026</p>
         </section>
 
         <section class="content legal">
@@ -48,30 +48,46 @@
             <h3>A. Information You Provide</h3>
             <p>We may collect:</p>
             <ul>
-                <li>Email address (if you create an account or contact us)</li>
+                <li>Email address and name, if you choose to sign in with Apple or Google, or if you contact us. SleepQ can be used without signing in at all, in which case we hold no email address for you.</li>
+                <li>Your sleep goal, usual bedtime and wake time, and similar preferences you set in the app</li>
+                <li>The evening check-in details you choose to log, such as caffeine, alcohol, stress, exercise, and late meals</li>
+                <li>Messages you send to the AI Sleep Coach</li>
                 <li>Feedback or support messages you send us</li>
             </ul>
 
-            <h3>B. Health Data (Apple Health Integration)</h3>
-            <p>With your explicit permission through Apple Health, SleepQ may access certain health-related data, including:</p>
+            <h3>B. Health Data (Apple Health and Health Connect)</h3>
+            <p>SleepQ reads health data from your device's health platform &mdash; <strong>Apple Health</strong> on iPhone, and <strong>Health Connect</strong> on Android &mdash; and only with your explicit permission. On both platforms SleepQ requests <strong>read-only</strong> access. It never writes, modifies, or deletes anything in Apple Health or Health Connect.</p>
+            <p>With your permission, SleepQ reads:</p>
             <ul>
-                <li>Sleep duration</li>
-                <li>Time in bed</li>
-                <li>Sleep stages (including REM and deep sleep)</li>
-                <li>Heart rate (if used for sleep analysis)</li>
-                <li>Other sleep-related metrics you authorize</li>
+                <li>Sleep sessions, including time in bed, sleep duration, and sleep stages (light, deep, REM, and awake periods)</li>
+                <li>Heart rate, and resting heart rate on iPhone</li>
+                <li>Heart rate variability</li>
+                <li>Respiratory rate</li>
+                <li>Blood oxygen saturation</li>
             </ul>
-            <p>SleepQ only accesses the specific data types you choose to share through Apple Health.</p>
+            <p>SleepQ reads these types only for periods relevant to your sleep, and only the types you have authorized. Denying or revoking any of them does not stop you from using the app &mdash; it just means insights that rely on that metric are unavailable.</p>
             <p>Health data:</p>
             <ul>
-                <li>Is used solely to provide sleep insights and coaching</li>
-                <li>Is not used for advertising</li>
+                <li>Is used solely to provide the sleep scores, insights, coaching, and experiments you see in the app</li>
+                <li>Is not used for advertising or marketing</li>
                 <li>Is not sold to third parties</li>
                 <li>Is not shared with data brokers</li>
             </ul>
-            <p>You can revoke Apple Health permissions at any time through your device settings.</p>
+            <p>To deliver these features, SleepQ transmits the sleep metrics described above &mdash; and metrics derived from them, such as sleep efficiency and how long you took to fall asleep &mdash; to our servers over an encrypted connection, and to the AI providers described in Section 3. Section 4 describes everyone we share information with.</p>
 
-            <h3>C. Automatically Collected Information</h3>
+            <h3>C. Health Connect (Android)</h3>
+            <p>On Android, SleepQ integrates with Health Connect and handles the data it receives as described in this policy. Specifically, data read through Health Connect:</p>
+            <ul>
+                <li><strong>Is accessed</strong> only after you grant each permission in Health Connect, and only for the data types listed above</li>
+                <li><strong>Is used</strong> only to generate the sleep scores, insights, coaching, and experiment results shown to you in the app</li>
+                <li><strong>Is stored</strong> on our servers in the United States, in the form of the sleep metrics described above</li>
+                <li><strong>Is shared</strong> only with the AI providers named in Section 3 and the infrastructure providers named in Section 4, never with advertisers or data brokers, and never sold</li>
+                <li><strong>Is deleted</strong> when you delete your account, as described in Section 5</li>
+            </ul>
+            <p>SleepQ does not use Health Connect data to serve or personalize advertising, and does not transfer it to any third party for advertising purposes.</p>
+            <p>You can review or revoke SleepQ's Health Connect permissions at any time in the <strong>Health Connect</strong> app, or through <strong>Settings &rarr; Security &amp; privacy &rarr; Privacy &rarr; Health Connect</strong> on your Android device. On iPhone, you can revoke Apple Health permissions at any time in <strong>Settings &rarr; Health &rarr; Data Access &amp; Devices</strong>. Revoking access stops SleepQ from reading any further data; to remove data we have already received, delete your account (see Section 5).</p>
+
+            <h3>D. Automatically Collected Information</h3>
             <p>We may collect limited technical information such as:</p>
             <ul>
                 <li>Device type</li>
@@ -98,7 +114,7 @@
             <p>SleepQ uses third-party artificial intelligence services to analyze your sleep data and generate personalized insights, summaries, and recommendations. We want to be transparent about how this works.</p>
 
             <h3>A. AI Service Providers</h3>
-            <p>To generate AI-powered insights, SleepQ sends sleep-related data from Apple Health to the following third-party AI providers:</p>
+            <p>To generate AI-powered insights, SleepQ sends sleep-related data read from Apple Health or Health Connect to the following third-party AI providers:</p>
             <ul>
                 <li><strong>OpenAI</strong> (OpenAI, L.L.C.) &mdash; used to generate sleep insights, summaries, and recommendations through its API</li>
                 <li><strong>xAI</strong> (X.AI Corp., operator of the Grok models) &mdash; used to generate sleep insights, summaries, and recommendations through its API</li>
@@ -109,11 +125,13 @@
             <p>When you request or receive AI-generated insights, we may transmit:</p>
             <ul>
                 <li>Sleep duration, time in bed, and sleep stages</li>
-                <li>Heart rate data associated with sleep periods</li>
-                <li>Other sleep-related metrics you have authorized through Apple Health</li>
+                <li>Heart rate, heart rate variability, respiratory rate, and blood oxygen saturation associated with sleep periods</li>
+                <li>Metrics derived from the above, such as sleep efficiency and time taken to fall asleep</li>
+                <li>Any other sleep-related metrics you have authorized through Apple Health or Health Connect</li>
                 <li>Aggregated trends derived from your historical sleep data</li>
+                <li>The check-in details you choose to log, such as caffeine, alcohol, stress, exercise, and late meals</li>
             </ul>
-            <p>We do <strong>not</strong> send your name, email address, Apple Health identifiers, or other directly identifying information to these AI providers along with your sleep data. Data is transmitted over encrypted connections (HTTPS/TLS).</p>
+            <p>We do <strong>not</strong> send your name, email address, Apple Health or Health Connect identifiers, or other directly identifying information to these AI providers along with your sleep data. Data is transmitted over encrypted connections (HTTPS/TLS).</p>
 
             <h3>C. How Providers Handle Your Data</h3>
             <p>We use the commercial APIs of OpenAI and xAI under their standard API terms, which include the following protections:</p>
@@ -134,9 +152,9 @@
             <h3>E. Your Choices</h3>
             <p>You can:</p>
             <ul>
-                <li>Decline Apple Health permissions, which will prevent any health data from being sent to AI providers</li>
-                <li>Revoke Apple Health permissions at any time through your device settings</li>
-                <li>Contact us to request deletion of your data</li>
+                <li>Decline Apple Health or Health Connect permissions, which prevents any health data from being read or sent to AI providers</li>
+                <li>Revoke those permissions at any time &mdash; in <strong>Settings &rarr; Health &rarr; Data Access &amp; Devices</strong> on iPhone, or in the <strong>Health Connect</strong> app on Android</li>
+                <li>Delete your account from within the app, or contact us to request deletion of your data</li>
             </ul>
 
             <h2>4. How We Share Information</h2>
@@ -156,7 +174,7 @@
                 <li>Resolve disputes</li>
                 <li>Enforce our agreements</li>
             </ul>
-            <p>If you request deletion of your account, we will delete your personal and associated health data within a reasonable timeframe, except where retention is required by law. Data temporarily held by AI providers (Section 3) is subject to their respective deletion practices. See <a href="delete-account.html">Delete Your Account</a> for step-by-step instructions.</p>
+            <p>If you request deletion of your account, we will delete your personal data and the health data we have received from Apple Health or Health Connect within a reasonable timeframe, except where retention is required by law. Deleting your account does not affect the data held on your own device by Apple Health or Health Connect &mdash; SleepQ only ever had read access, and only deletes the copy we hold. Data temporarily held by AI providers (Section 3) is subject to their respective deletion practices. See <a href="delete-account.html">Delete Your Account</a> for step-by-step instructions.</p>
 
             <h2>6. Your Rights</h2>
             <p>As a U.S.-based user, you may:</p>
@@ -168,13 +186,13 @@
                 <li>Withdraw consent for AI-powered analysis (note: this may disable insight features)</li>
             </ul>
             <p>Please contact us at <a href="mailto:support@sleepq.app">support@sleepq.app</a>.</p>
-            <p>You may also revoke Apple Health data access directly through your device settings at any time.</p>
+            <p>You may also revoke health data access directly on your device at any time &mdash; through Apple Health on iPhone, or Health Connect on Android.</p>
 
             <h2>7. Children's Privacy</h2>
             <p>SleepQ is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information, please contact us and we will delete it.</p>
 
             <h2>8. Analytics Services</h2>
-            <p>We may use third-party analytics tools to understand general usage patterns and improve the app. These tools collect anonymized or aggregated technical data. Health data from Apple Health is not shared with analytics providers for advertising purposes.</p>
+            <p>We may use third-party analytics tools to understand general usage patterns and improve the app. These tools collect anonymized or aggregated technical data. Health data read from Apple Health or Health Connect is never shared with analytics or advertising providers.</p>
 
             <h2>9. Data Security</h2>
             <p>We use reasonable administrative, technical, and physical safeguards to protect your information, including:</p>
